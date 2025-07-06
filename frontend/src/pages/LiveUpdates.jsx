@@ -71,12 +71,12 @@ function LiveUpdates() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8000/query",
-        { text: query, user_id: "mosdac_user" },
+        "http://localhost:8000/chat",
+        { message: query },
         { timeout: 10000 }
       );
       const botMessage = { sender: "bot", text: response.data.response, id: Date.now() };
-      updateChatMessages(botMessage);
+      updateChatMessages(botMessage, newChat.id);
     } catch (error) {
       // Mock response if backend isn't ready
       const botMessage = {
@@ -84,17 +84,17 @@ function LiveUpdates() {
         text: `Mock response: Weather data for ${query} is unavailable.`,
         id: Date.now(),
       };
-      updateChatMessages(botMessage);
+      updateChatMessages(botMessage, newChat.id);
     } finally {
       setIsLoading(false);
     }
     setQuery("");
   };
 
-  const updateChatMessages = (message) => {
+  const updateChatMessages = (message, chatId) => {
     setChatSessions((prev) =>
       prev.map((chat) =>
-        chat.id === currentChatId ? { ...chat, messages: [...chat.messages, message] } : chat
+        chat.id === chatId ? { ...chat, messages: [...chat.messages, message] } : chat
       )
     );
   };

@@ -30,8 +30,8 @@ function Chat() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8000/query",
-        { text: query, user_id: "mosdac_user" },
+        "http://localhost:8000/chat",
+        { message: query },
         { timeout: 10000 } // 10-second timeout
       );
       const botMessage = { sender: "bot", text: response.data.response, id: Date.now() };
