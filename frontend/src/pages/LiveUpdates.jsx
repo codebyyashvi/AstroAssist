@@ -118,7 +118,7 @@ function LiveUpdates() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           placeholder="Click map to query coordinates (e.g., 'Weather at lat: 13.08, lng: 80.27')..."
           className="w-full p-2 border rounded disabled:bg-gray-200"
           disabled={isLoading}
