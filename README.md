@@ -43,7 +43,7 @@ An intelligent AI-powered chatbot built for the [MOSDAC Portal](https://www.mosd
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run dev (port: 5731)
 ```
 
 ### Backend
@@ -51,5 +51,6 @@ npm run dev
 ```bash
 cd Backend
 pip install -r requirements.txt
-python app.py
+setup your .venv and activate
+python src/main.py (port: 8000)
 ```
