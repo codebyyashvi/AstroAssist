@@ -5,6 +5,7 @@ import Chat from "./pages/Chat"
 import LiveUpdates from "./pages/LiveUpdates"
 import PDFBot from "./pages/PDFBot";
 import PDFViewing from "./pages/PDFViewing"
+import About from "./pages/About"
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/updates" element={<LiveUpdates />}/>
             <Route path="/pdf-viewing" element={<PDFViewing />} />
             <Route path="/pdf-bot/:bookId" element={<PDFBot />} />
+            <Route path="/about" element={<About />}/>
           </Route>
         </Routes>
       </BrowserRouter>

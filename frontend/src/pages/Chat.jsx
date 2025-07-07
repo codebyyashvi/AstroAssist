@@ -62,57 +62,72 @@ function Chat() {
   };
 
   return (
-    <div className="flex-1 flex flex-col p-4 bg-gradient-to-b from-blue-900 to-gray-100">
-      <div className="flex-1 overflow-y-auto">
-        {currentChatId ? (
-          chatSessions
-            .find((chat) => chat.id === currentChatId)
-            ?.messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`mb-2 p-2 rounded-lg max-w-md ${
-                  msg.sender === "user" ? "bg-blue-200 ml-auto" : "bg-white"
-                }`}
-              >
-                {msg.text}
-              </div>
-            ))
-        ) : (
-          <div className="text-gray-500 text-center">Creating a new chat...</div>
-        )}
-        {isLoading && (
-          <div className="text-gray-500 text-center flex items-center justify-center">
-            <svg
-              className="animate-spin h-5 w-5 mr-2 text-blue-600"
-              viewBox="0 0 24 24"
-            >
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
-            </svg>
-            Loading...
+    <div className="flex-1 flex flex-col h-full bg-gradient-to-b from-blue-900 to-gray-100">
+      {/* Prompt at top of chat */}
+      <div className="flex-1 overflow-y-auto p-4">
+      {currentChatId ? (() => {
+        const messages = chatSessions.find((chat) => chat.id === currentChatId)?.messages || [];
+        if (messages.length === 0) {
+          return (
+            <div className="h-full flex items-center justify-center text-white text-xl font-semibold text-center">
+              Ask about MOSDAC satellite data, missions, or documentation.
+            </div>
+          );
+        }
+
+        return messages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`mb-2 p-2 rounded-lg max-w-md ${
+              msg.sender === "user" ? "bg-blue-200 ml-auto" : "bg-white"
+            }`}
+          >
+            {msg.text}
           </div>
-        )}
-      </div>
-      <div className="p-4 bg-white border-t">
+        ));
+      })() : (
+        <div className="text-gray-200 text-center">Creating a new chat...</div>
+      )}
+
+      {isLoading && (
+        <div className="text-gray-200 text-center flex items-center justify-center mt-4">
+          <svg
+            className="animate-spin h-5 w-5 mr-2 text-blue-300"
+            viewBox="0 0 24 24"
+          >
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+          </svg>
+          Loading...
+        </div>
+      )}
+    </div>
+
+
+    {/* Input Section - Fixed at Bottom */}
+    <div className="bg-white border-t p-4">
+      <div className="flex gap-2">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          onKeyPress={handleKeyPress}
-          placeholder="Ask about MOSDAC data..."
-          className="w-full p-2 border rounded disabled:bg-gray-200"
+          onKeyDown={handleKeyPress}
+          placeholder="Type your message..."
+          className="flex-1 p-2 border rounded disabled:bg-gray-200"
           disabled={isLoading}
           aria-label="Chat input for MOSDAC queries"
         />
         <button
           onClick={handleSend}
-          className="mt-2 bg-blue-600 text-white p-2 rounded disabled:bg-gray-400"
+          className="bg-blue-600 text-white px-4 py-2 rounded disabled:bg-gray-400"
           disabled={isLoading}
         >
           Send
         </button>
       </div>
     </div>
+  </div>
+
   );
 }
 
