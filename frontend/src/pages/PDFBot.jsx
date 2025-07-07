@@ -183,7 +183,7 @@ function PDFBot() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyPress}
                 placeholder="Ask about this PDF..."
                 className="w-full p-2 border rounded disabled:bg-gray-200"
                 disabled={isLoading}

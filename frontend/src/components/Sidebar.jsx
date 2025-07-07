@@ -22,7 +22,8 @@ function Sidebar({ chatSessions, setChatSessions, currentChatId, setCurrentChatI
       <Link to="/" className="mb-2 p-2 bg-blue-700 rounded hover:bg-blue-600">Chat</Link>
       <Link to="/updates" className="mb-2 p-2 bg-blue-700 rounded hover:bg-blue-600">Live Updates</Link>
       <Link to="/pdf-viewing" className="mb-2 p-2 bg-blue-700 rounded hover:bg-blue-600">PDF Viewing</Link>
-      <Link to="/pdf-bot" className="mb-2 p-2 bg-blue-700 rounded hover:bg-blue-600">PDF Bot</Link>
+      <Link to="/pdf-bot/1" className="mb-2 p-2 bg-blue-700 rounded hover:bg-blue-600">PDF Bot</Link>
+      <Link to="/about" className="mb-2 p-2 bg-blue-700 rounded hover:bg-blue-600">About</Link>
       <button
         onClick={handleNewChat}
         className="mb-4 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded"
