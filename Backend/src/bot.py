@@ -4,7 +4,7 @@ from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
 from langchain.chat_models import init_chat_model
 from langchain.schema import AIMessage
-import os
+import os, json
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -29,26 +29,32 @@ graph_builder.add_edge("chatbot", END)
 
 graph = graph_builder.compile()
 
-SYSTEM_PROMPT = """You are an AI-powered virtual assistant trained to help users find accurate and contextual information from the MOSDAC (Meteorological and Oceanographic Satellite Data Archival Centre) portal.
+# Get the current script directory
+current_dir = os.path.dirname(__file__)
+# print(current_dir)
 
-    Your purpose is to answer user queries related to satellite missions, data products, usage documentation, FAQs, and geospatial datasets available on the platform.
+# Build the correct relative path to the prompt file
+prompt_path = os.path.join(current_dir, "system_prompt.txt")
+faq_path = os.path.join(current_dir, "extract-faqs.json")
 
-    Your responses should be:
+# Load system prompt
+with open(prompt_path, "r", encoding="utf-8") as f:
+    system_prompt = f.read()
 
-    Accurate: Use information retrieved from official documents, FAQs, and metadata hosted on the MOSDAC portal.
+# Load FAQs
+with open(faq_path, "r", encoding="utf-8") as f:
+    faqs = json.load(f)
 
-    Contextual: Understand the user's intent and provide relevant, concise answers.
 
-    Conversational: Maintain a helpful and polite tone, ask for clarification if needed, and support multi-turn conversations.
+# Format FAQs as plain text (Q&A style)
+formatted_faqs = "\n\nFrequently Asked Questions (FAQs):\n"
+for faq in faqs:
+    formatted_faqs += f"\nQ: {faq['question']}\nA: {faq['answer']}\n"
 
-    Geospatial-Aware: If a query involves locations, timeframes, or regions (e.g., "data for Tamil Nadu floods in 2022"), consider geospatial metadata to return region-specific results.
+# Combine the system prompt and the formatted FAQs
+SYSTEM_PROMPT = system_prompt + formatted_faqs
+# print(SYSTEM_PROMPT)
 
-    You are capable of understanding both technical and non-technical language.
-    You must prefer structured, reliable sources (documents, FAQs, product catalogues) over generic summaries.
-
-    When asked about a topic not available in the ingested MOSDAC content, politely inform the user that the requested information is currently not available.
-
-    You are designed to help users navigate content faster, especially those who may find the MOSDAC interface complex or layered."""
 
 def get_response(user_query: str) -> str :
     messages = [

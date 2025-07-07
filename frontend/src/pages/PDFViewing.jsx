@@ -18,23 +18,80 @@ function PDFViewing() {
         console.error("Failed to fetch resources:", error);
         // Mock data if backend isn't ready
         setResources([
-          {
-            id: "1",
-            title: "INSAT-3D Data",
-            url: "https://mosdac.gov.in/insat3d.pdf",
-            type: "PDF",
-            topic: "Satellite Manuals",
-            description: "Technical data for INSAT-3D (mock data).",
-          },
-          {
-            id: "2",
-            title: "Weather Dataset",
-            url: "https://mosdac.gov.in/weather.xlsx",
-            type: "Excel",
-            topic: "Weather Data",
-            description: "Weather data for India (mock data).",
-          },
-        ]);
+        {
+          id: "1",
+          title: "INSAT-3D COTS Manual",
+          url: "https://www.mosdac.gov.in/docs/INSAT3D_COTS.pdf",
+          type: "PDF",
+          topic: "Satellite Manuals",
+          description: "INSAT-3D Commercial Off-The-Shelf (COTS) documentation.",
+        },
+        {
+          id: "2",
+          title: "INSAT-3D ATBD (May 2015)",
+          url: "https://www.mosdac.gov.in/docs/INSAT_3D_ATBD_MAY_2015.pdf",
+          type: "PDF",
+          topic: "Algorithm Theoretical Basis Document",
+          description: "ATBD for INSAT-3D data products as of May 2015.",
+        },
+        {
+          id: "3",
+          title: "ATBD for INSAT-3D Sea Surface Temperature (SST)",
+          url: "https://www.mosdac.gov.in/docs/ATBD_INSAT-3D_SST_REV_V1.1.pdf",
+          type: "PDF",
+          topic: "Algorithm Theoretical Basis Document",
+          description: "Detailed algorithm documentation for SST retrieval from INSAT-3D.",
+        },
+        {
+          id: "4",
+          title: "Incremental ATBD (Feb 2020)",
+          url: "https://www.mosdac.gov.in/docs/Incremental-ATBD-12Feb2020.pdf",
+          type: "PDF",
+          topic: "Algorithm Updates",
+          description: "Incremental updates to the ATBDs released in February 2020.",
+        },
+        {
+          id: "5",
+          title: "INSAT-3D Products Guide",
+          url: "https://www.mosdac.gov.in/docs/INSAT3D_Products.pdf",
+          type: "PDF",
+          topic: "Product Documentation",
+          description: "INSAT-3D derived product categories and metadata reference.",
+        },
+        {
+          id: "6",
+          title: "INSAT-3D Product Types & Processing Levels",
+          url: "https://www.mosdac.gov.in/docs/V1_INSAT3D_ProductTypes%20and%20ProcessingLevel.pdf",
+          type: "PDF",
+          topic: "Product Documentation",
+          description: "List and processing level information for INSAT-3D products.",
+        },
+        {
+          id: "7",
+          title: "INSAT Product Version Information",
+          url: "https://www.mosdac.gov.in/docs/INSAT_Product_Version_information_V01.pdf",
+          type: "PDF",
+          topic: "Versioning",
+          description: "Version control documentation for INSAT satellite products.",
+        },
+        {
+          id: "8",
+          title: "HEM Rain Algorithm (ATBD)",
+          url: "https://www.mosdac.gov.in/docs/HEM_rain-revised-atbd.pdf",
+          type: "PDF",
+          topic: "Algorithm Theoretical Basis Document",
+          description: "Revised ATBD for High-Efficiency Multispectral (HEM) rain estimation.",
+        },
+        {
+          id: "9",
+          title: "INSAT AOD Algorithm (Revised)",
+          url: "https://www.mosdac.gov.in/docs/INSAT_AOD_ATBD_revised.doc.pdf",
+          type: "PDF",
+          topic: "Algorithm Theoretical Basis Document",
+          description: "Revised ATBD for Aerosol Optical Depth (AOD) from INSAT.",
+        },
+      ]);
+
       }
     };
     fetchResources();

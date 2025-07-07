@@ -1,0 +1,9 @@
+link1: https://www.mosdac.gov.in/docs/INSAT3D_COTS.pdf
+link2: https://www.mosdac.gov.in/docs/INSAT_3D_ATBD_MAY_2015.pdf
+link3: https://www.mosdac.gov.in/docs/ATBD_INSAT-3D_SST_REV_V1.1.pdf
+link4: https://www.mosdac.gov.in/docs/Incremental-ATBD-12Feb2020.pdf
+link5: https://www.mosdac.gov.in/docs/INSAT3D_Products.pdf
+link6: https://www.mosdac.gov.in/docs/V1_INSAT3D_ProductTypes%20and%20ProcessingLevel.pdf
+link7: https://www.mosdac.gov.in/docs/INSAT_Product_Version_information_V01.pdf
+link8: https://www.mosdac.gov.in/docs/HEM_rain-revised-atbd.pdf
+link9: https://www.mosdac.gov.in/docs/INSAT_AOD_ATBD_revised.doc.pdf
